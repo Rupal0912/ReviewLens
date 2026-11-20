@@ -1,0 +1,11 @@
+.env
+*.db
+__pycache__/
+.pytest_cache/
+venv/
+.venv/
+node_modules/
+frontend/dist/
+
+# Generated audit reports
+frontend/audit-report.json
