@@ -2,6 +2,7 @@
 *.db
 __pycache__/
 .pytest_cache/
+/backend/.pytest-run/
 venv/
 .venv/
 node_modules/
