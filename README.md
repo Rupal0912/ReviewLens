@@ -14,7 +14,11 @@ Set-Location backend
 py -3.11 -m venv venv
 .\venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-Copy-Item .env.example .env
+if (Test-Path .env) {
+  Write-Host ".env already exists; leaving it unchanged."
+} else {
+  Copy-Item .env.example .env
+}
 # Edit .env and set GROQ_API_KEY. GROQ_MODEL is openai/gpt-oss-20b.
 uvicorn app.main:app --reload --port 8000
 ```
@@ -112,10 +116,6 @@ The 30-row `sample_data/reviews.csv` was processed through the live Groq analysi
 ### Review table and reply drafts
 
 ![Review rows with drafted replies](docs/review-replies.png)
-
-### Positive sentiment filter
-
-![Reviews filtered to positive sentiment](docs/reviews-filtered-positive.png)
 
 ### Positive quality reviews
 
